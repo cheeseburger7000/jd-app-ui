@@ -80,7 +80,7 @@ export default {
                     this.$store.commit('setToken', token)
                     window.localStorage.setItem('token', token)
                     // 防止用户返回上一级, 因此使用replace
-                    this.$router.replace({path: 'index'})
+                    this.$router.replace({path: '/bottomTabBar/index'})
                 } else {
                     alert(result.message);
                 }
