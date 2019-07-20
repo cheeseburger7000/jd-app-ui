@@ -80,7 +80,17 @@ export default {
                     this.$store.commit('setToken', token)
                     window.localStorage.setItem('token', token)
                     // 防止用户返回上一级, 因此使用replace
-                    this.$router.replace({path: '/bottomTabBar/index'})
+                    //this.$router.replace({path: '/bottomTabBar/index'})
+
+                    // 判断路由是否带参, 带参就去重定向参数地址, 否则就去首页
+                    // $route 和 $router
+                    console.log(this.$route.query.redirect)
+                    if (this.$route.query.redirect) {
+                        this.$router.replace({path: this.$route.query.redirect})
+                    } else {
+                        this.$router.replace({path: '/bottomTabBar/index'})
+                    }
+
                 } else {
                     alert(result.message);
                 }

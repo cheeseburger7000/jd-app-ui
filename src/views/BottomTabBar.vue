@@ -62,6 +62,26 @@ export default {
             break;
         }
     }
+  },
+  created() {
+    // 根据当前路由, 设置底部工具栏的位置
+    switch(this.$route.path) {
+      case '/bottomTabBar/index':
+        this.selectedLabelDefault = '首页';
+      break;
+      case '/bottomTabBar/list':
+        this.selectedLabelDefault = '分类';
+      break;
+      case '/bottomTabBar/search':
+        this.selectedLabelDefault = '搜索';
+      break;
+      case '/bottomTabBar/cart':
+        this.selectedLabelDefault = '购物车';
+      break;
+      case '/bottomTabBar/me':
+        this.selectedLabelDefault = '我的';
+      break;
+    }
   }
 }
 </script>
