@@ -3,11 +3,10 @@ import Vuex from 'vuex'
 
 Vue.use(Vuex)
 
-export default new Vuex.Store({
+let store = new Vuex.Store({
   state: {
     token: '',
-    cartarry: [], // 购物车
-
+    cartarry: JSON.parse(localStorage.getItem('cartarry')) || [], // 购物车
 
   },
   // 同步 commit
@@ -58,3 +57,9 @@ export default new Vuex.Store({
     }
   }
 })
+
+// 监听mutations被调用的事件
+store.subscribe((mutations, state) => {
+  localStorage.setItem('cartarry', JSON.stringify(state.cartarry))
+})
+export default store

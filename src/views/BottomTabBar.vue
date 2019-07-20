@@ -105,20 +105,20 @@ export default {
         z-index 1000
         width 100%
         background #fff
-    .cube-tab div
-        font-size 16px
-        padding-top 3px
-    i
-        font-size 20px
+        .cube-tab div
+            font-size 16px
+            padding-top 3px
+        i
+            font-size 20px
     .Router
         position absolute
         width 100%
         transition all 0.8s ease
-    .silde-left-enter, .slide-right-leave-active
+    .slide-left-enter,.slide-right-leave-active
         opacity 0
         -webkit-transform translate(100%,0)
         transform translate(100%,0)
-    .slide-right-leave-active, .silde-left-enter
+    .slide-left-leave-active,.slide-right-enter
         opacity 0
         -webkit-transform translate(-100%,0)
         transform translate(-100%,0)
