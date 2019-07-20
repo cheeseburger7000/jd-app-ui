@@ -52,6 +52,38 @@ export default {
                     label: '手机数码',
                     active: false    
                 },
+                {
+                    label: '家用电器2',
+                    active: false   
+                },
+                {
+                    label: '热门推荐2',
+                    active: false    
+                },
+                {
+                    label: '手机数码2',
+                    active: false    
+                },
+                {
+                    label: '热门推荐2',
+                    active: false    
+                },
+                {
+                    label: '手机数码2',
+                    active: false    
+                },
+                {
+                    label: '手机数码2',
+                    active: false    
+                },
+                {
+                    label: '热门推荐2',
+                    active: false    
+                },
+                {
+                    label: '手机数码2',
+                    active: false    
+                },
             ]
         }
     },
@@ -78,6 +110,18 @@ export default {
     created() {
         // 获取默认分页数据
         this.getclassify(0)
+    }, 
+    // DOM加载完成之后, 执行这个操作
+    mounted() {
+        // 设置滚动盒子的高度
+        // 左, 右盒子高度
+        const leftpanels = document.querySelector('.leftpanels')
+        const rightpanels = document.querySelector('.rightpanels')
+        // 当前客户端高度
+        const bodyheight = document.documentElement.clientHeight
+        // 57px为底部导航的高度
+        leftpanels.style.height = bodyheight - 57+'px'
+        rightpanels.style.height = bodyheight - 57+'px'
     }
 }
 </script>

@@ -39,4 +39,4 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 - 嵌套路由
 - 路由跳转时实现过渡效果
 - 实现商品分类模块
-
+- 根据不同的移动客户端, 设置滚动盒子
