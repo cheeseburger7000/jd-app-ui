@@ -51,6 +51,26 @@ module.exports = {
                   })
                 }
               })
+
+              // 首页轮播图API
+              app.get('/api/banner', (req, res) => {
+                res.json({
+                  data: [
+                    {
+                      url: 'http://www.didichuxing.com/',
+                      image: '//webapp.didistatic.com/static/webapp/shield/cube-ui-examples-slide01.png'
+                    },
+                    {
+                      url: 'http://www.didichuxing.com/',
+                      image: '//webapp.didistatic.com/static/webapp/shield/cube-ui-examples-slide02.png'
+                    },
+                    {
+                      url: 'http://www.didichuxing.com/',
+                      image: '//webapp.didistatic.com/static/webapp/shield/cube-ui-examples-slide03.png'
+                    }
+                  ]
+                })
+              })
             }
         }
     },

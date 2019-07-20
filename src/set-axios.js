@@ -12,7 +12,7 @@ export default function setAxios() {
         return config
     })
 
-    // 拦截HTTP响应，处理token过期
+    // 拦截HTTP响应处理token过期
     axios.interceptors.response.use(res => {
         if (res.status == 200) {
             const data = res.data
