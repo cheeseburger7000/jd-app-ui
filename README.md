@@ -29,6 +29,11 @@ npm run lint
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ## Tips
+- Token处理
+- UI组件堆叠
+- 嵌套路由
+
+
 
 ### Token处理
 - 存储：vuex 和 localStorage

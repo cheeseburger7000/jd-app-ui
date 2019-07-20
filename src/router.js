@@ -31,6 +31,40 @@ export default new Router({
       path: '/index',
       name: 'index',
       component: () => import('./views/Index.vue')
+    },
+    {
+      path: '/bottomTabBar',
+      name: 'bottomTabBar',
+      component: () => import('./views/BottomTabBar.vue'),
+      children: [
+        {
+          // 嵌套路由无需添加/
+          path: 'index',
+          name: 'index',
+          component: () => import('./views/Index.vue')
+        },
+        {
+          path: 'list',
+          name: 'list',
+          component: () => import('./views/List.vue')
+        },
+        {
+          path: 'search',
+          name: 'search',
+          component: () => import('./views/Search.vue')
+        },
+        {
+          path: 'cart',
+          name: 'cart',
+          component: () => import('./views/Cart.vue')
+        },
+        {
+          path: 'me',
+          name: 'me',
+          component: () => import('./views/Me.vue')
+        },
+      ],
+      redirect: '/bottomTabBar/index'
     }
   ]
 })
