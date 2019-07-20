@@ -11,7 +11,7 @@
             <ul>
                 <li v-for="(tag, index) in tags" :key="index">
                     <img :src="tag.image" alt="">
-                    <p>{{ tag.label }}</p>
+                    <p>{{ tag.label }} <i class="cubeic-add" @click="addtocart($event, tag)"></i></p>
                 </li>
             </ul>
         </cube-scroll>
@@ -104,6 +104,10 @@ export default {
         async getclassify(index) {
             const result = await this.$http.get('/api/classify', {params: {type: index}})
             this.tags = result.data
+        },
+        // 添加商品到购物车 vuex
+        addtocart(e, tag) {
+            this.$store.commit('toCart', tag);
         }
     },
     // 数据初始化: 请求后端API, 将后端响应的属性赋值给data中的属性
@@ -154,4 +158,6 @@ export default {
                     img 
                         width 80px
                         height  80px
+                    .cubeic-add
+                        font-size 18px
 </style>

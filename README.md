@@ -40,3 +40,4 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 - 路由跳转时实现过渡效果
 - 实现商品分类模块
 - 根据不同的移动客户端, 设置滚动盒子
+- 路由拦截+路由属性实现登录成功后, 重定向回原来访问的页面

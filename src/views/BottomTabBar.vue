@@ -10,13 +10,17 @@
         @change="changeHandler"
         class="botnav">
     </cube-tab-bar>
+    <span class="countsum">{{ countsum }}</span>
   </div>
 </template>
 
 <script>
+import {mapGetters} from 'vuex'
+
 export default {
   data () {
     return {
+      //countsum: 10,
       transitionName: 'slide-right',
       selectedLabelDefault: '首页',
       tabs: [{
@@ -82,6 +86,13 @@ export default {
         this.selectedLabelDefault = '我的';
       break;
     }
+  },
+  computed: {
+    ...mapGetters({
+      // 获取vuex的countsum
+      // ES6
+      countsum: 'countsum'
+    })
   }
 }
 </script>
@@ -111,4 +122,16 @@ export default {
         opacity 0
         -webkit-transform translate(-100%,0)
         transform translate(-100%,0)
+    .countsum
+        position fixed
+        bottom 33px
+        right 23%
+        z-index 1001
+        width 18px
+        height 19px
+        border-radius 50%
+        line-height 18px
+        font-size 14px
+        background red
+        color #fff
 </style>
