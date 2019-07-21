@@ -15,6 +15,19 @@
                 </li>
             </ul>
         </cube-scroll>
+        <div class="ball-wrap">
+            <transition 
+                @before-enter="beforeEnter" 
+                @enter="enter" 
+                @afterEnter="afterEnter" 
+            >
+                <div class="ball" v-if="ball.show">
+                    <div class="inner">
+                        <i class="cubeic-add"></i>
+                    </div>
+                </div>
+            </transition>
+        </div>
     </div>
 </template>
 
@@ -22,6 +35,10 @@
 export default {
     data() {
         return {
+            ball: {
+                show: false,
+                el: ''
+            },
             tags: [],
             tabslabel: [
                 {
@@ -107,7 +124,43 @@ export default {
         },
         // 添加商品到购物车 vuex
         addtocart(e, tag) {
-            this.$store.commit('toCart', tag);
+            this.ball.show = true
+            // 获取点击元素
+            this.ball.el = e.target
+            
+            // TODO 设置睡眠时间, 等小球动画完毕之后, 再执行下面语句
+            
+            this.$store.commit('toCart', tag)
+        },
+        beforeEnter(el){
+            //让小球移动到点击的位置
+            //获取点击位置
+            const dom=this.ball.el
+            console.log(dom)
+            const rect=dom.getBoundingClientRect()//获取点击的dom的位置
+            console.log(rect)
+            const x=rect.left-window.innerWidth*0.7
+            const y=-(window.innerHeight-rect.top)
+            console.log(x,y)
+            el.style.display='block'
+            el.style.transform=`translate3d(0,${y}px,0)`
+            const inner=el.querySelector('.inner')
+            inner.style.transform=`translate3d(${x}px,0,0)`
+        },
+        enter(el,done){
+            //触发重绘
+            document.body.offsetHeight
+            //小球移动回到原点，就是购物车的位置
+             el.style.transform=`translate3d(0,0,0)`
+             const inner=el.querySelector('.inner')
+            inner.style.transform=`translate3d(0,0,0)`
+            //过渡完成后执行的事件
+            el.addEventListener('transitionend',done)
+        },
+        afterEnter(el){
+            //结束隐藏小球
+            this.ball.show=false
+            el.style.display='none'
         }
     },
     // 数据初始化: 请求后端API, 将后端响应的属性赋值给data中的属性
@@ -131,6 +184,18 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
+    .ball-wrap
+        .ball
+            position fixed
+            left 70%
+            bottom 10px
+            z-index 1003
+            color red
+            transition all 1s cubic-bezier(0.49,-0.29,0.75,0.41)
+            .inner
+                width 16px
+                height 16px
+                transition all 1s linear
     .panelsbox
         display flex
         .leftpanels

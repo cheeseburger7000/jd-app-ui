@@ -58,7 +58,7 @@ let store = new Vuex.Store({
   }
 })
 
-// 监听mutations被调用的事件
+// 监听mutations被调用的事件: mutations中的方法每次被调用时, 这个方法就会被执行...
 store.subscribe((mutations, state) => {
   localStorage.setItem('cartarry', JSON.stringify(state.cartarry))
 })
